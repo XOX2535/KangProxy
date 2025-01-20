@@ -29,13 +29,7 @@ jobs:
 
     - name: NeProxy - RAW_PROXY
       run: |
-          curl -sSf "${{ secrets.RAW_1 }}" > RAW_1.txt
-          curl -sSf "${{ secrets.RAW_2 }}" > RAW_2.txt
-          curl -sSf "${{ secrets.RAW_3 }}" > RAW_3.txt
-          curl -sSf "${{ secrets.RAW_4 }}" > RAW_4.txt
-          curl -sSf "${{ secrets.RAW_5 }}" > RAW_5.txt
-          cat RAW_1.txt RAW_2.txt RAW_3.txt RAW_4.txt RAW_5.txt > RAW.txt
-          rm -rf RAW_*
+          curl -sSf "${{ secrets.RAW_1 }}" > RAW.txt
           awk -F: '{NF=NF-1}1' OFS=":" "RAW.txt" > "clean_RAW.txt"
           mv clean_RAW.txt RAW.txt
 
