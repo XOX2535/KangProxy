@@ -68,7 +68,7 @@ jobs:
         echo "email:       ${{ steps.import-gpg.outputs.email }}"
 
     - name: Commit +sign commit and push changes
-      run: |-
+      run: |
         git config --global user.email "${{ steps.import-gpg.outputs.email }}"
         git config --global user.name "${{ steps.import-gpg.outputs.name }}"
         git add -A
