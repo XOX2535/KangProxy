@@ -12,19 +12,18 @@ jobs:
       run:
         shell: bash
         working-directory: ./
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: KangProxy - Checker
-      run: |
-          wget "${{ secrets.PROXY_CHECKER }}"
-          unzip ProxyCheker.zip
-          cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > ProxyCheker/proxies.txt
-          cd ProxyCheker
-          python3 -m pip install --upgrade pip wheel
-          pip3 install "setuptools<59"
-          pip3 install -r requirements.txt
-          python3 proxy_check.py
+        steps:
+  - uses: actions/checkout@v2
+  - name: KangProxy - Checker
+    run: |
+        wget "${{ secrets.PROXY_CHECKER }}"
+        unzip ProxyCheker.zip
+        cat http/http.txt https/https.txt socks4/socks4.txt socks5/socks5.txt > ProxyCheker/proxies.txt
+        cd ProxyCheker
+        python3 -m pip install --upgrade pip wheel
+        pip3 install "setuptools<59"
+        pip3 install -r requirements.txt
+        python3 proxy_check.py
 
     - name: KangProxy - Cleaning
       run: |
